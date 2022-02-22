@@ -1,4 +1,4 @@
-# realizzare server web che visualizzi l'orario e colori lo sfondo in base all'orario 
+# realizzare server web che visualizzi l'orario e colori lo sfondo in base all'orario: un colore per la mattina, uno per il pomeriggio, uno per la sera e una per la notte.
 from flask import Flask, render_template
 from datetime import datetime
 
