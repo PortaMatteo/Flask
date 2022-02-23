@@ -1,5 +1,8 @@
 .titolo {
     text-align:center;
+    border: 0px;
+    margin-top: -10px;
+    background-color: #71717a;
 }
 
 

@@ -14,12 +14,19 @@ def meteo():
     elif nRandom <= 5:
         immagine = "/static/images/nuvoloso.jpg"
     else:
-        immagine = "static/images/sole.webp"
+        immagine = "static/images/sole.jpg"
     return render_template("meteo.html", meteo=immagine)
 
 @app.route("/frasicelebri")
 def libro():
-    return render_template()
+    frasi = [{"Autore": "Frida Kahlo" , "Frase": "Innamorati di te, della vita e dopo di chi vuoi." },
+    {"Autore": "Dietrich Bonhoeffer" , "Frase": "Contro la stupidità non abbiamo difese."},
+    {"Autore": "Charlie Chaplin" , "Frase": "Un giorno senza un sorriso è un giorno perso."},{"Autore": "Francesco Bacone" , "Frase": "Sapere è potere."},
+    {"Autore": "Italo Calvino" , "Frase": "Il divertimento è una cosa seria."},{"Autore": "Lewis Carroll" , "Frase": "Qui siamo tutti matti."},
+    {"Autore": "Johann Wolfgang von Goethe", "Frase": "Il dubbio cresce con la conoscenza."},{"Autore": "Luis Sepùlveda" , "Frase": "Vola solo chi osa farlo."},
+    {"Autore": "Lucio Anneo Seneca", "Frase": "Se vuoi essere amato, ama."},{"Autore": "Voltaire", "Frase": "Chi non ha bisogno di niente non è mai povero."}]
+    fRandom = random.randint(0,9)
+    return render_template("frasicelebri.html", autore = frasi[fRandom]["Autore"], frase = frasi[fRandom]["Frase"])
 
 @app.route("/quantomanca")
 def calendario():
