@@ -11,12 +11,15 @@ def home():
 def meteo():
     nRandom = random.randint(0,8)
     if nRandom <= 2:
+        meteo = "PIOGGIA"
         immagine = "/static/images/pioggia.jpg"
     elif nRandom <= 5:
+        meteo = "NUVOLOSO"
         immagine = "/static/images/nuvoloso.jpg"
     else:
+        meteo = "SOLEGGIATO"
         immagine = "static/images/sole.jpg"
-    return render_template("meteo.html", meteo=immagine)
+    return render_template("meteo.html", meteo = meteo ,meteo_img=immagine)
 
 @app.route("/frasicelebri")
 def libro():
