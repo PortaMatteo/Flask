@@ -1,7 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .titolo {
     text-align:center;
-    border: 0px;
-    margin-top: -10px;
     background-color: #71717a;
 }
 
@@ -9,3 +12,23 @@
 #immagini {
     text-align:center;
 }
+
+body{
+    font-family: sans-serif;
+}
+
+#frase-autore{
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+
+}
+
+#giorni {
+    text-align:center;
+    font-size: 5em;
+}
+

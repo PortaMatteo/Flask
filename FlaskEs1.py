@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import random
+from datetime import datetime
 app = Flask(__name__)
 
 @app.route("/")
@@ -30,7 +31,9 @@ def libro():
 
 @app.route("/quantomanca")
 def calendario():
-    return render_template()
+    now = datetime.now()
+    school = datetime(2022,6,8)
+    return render_template("calendario.html", data = (school - now).days)
 
 
 

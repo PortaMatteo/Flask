@@ -3,12 +3,23 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Frasi Celebri</title>
+    <style>
+        body{
+            background-image: url("/static/images/sfondo.jpg");
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
+
     <h1 class="titolo">FRASI CELEBRI</h1>
-    <h2>Autore: {{autore}}</h2>
-    <h2>Frase: {{frase}}</h2>
+
+    <div id="frase-autore">      
+        <h2 id="frase">{{frase}}</h2>
+        <h2 id="autore">-{{autore}}</h2>
+    </div>
+
 </body>
 
 </html>
