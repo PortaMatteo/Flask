@@ -3,6 +3,7 @@ import random
 from datetime import datetime
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -37,7 +38,6 @@ def calendario():
     now = datetime.now()
     school = datetime(2022,6,8)
     return render_template("calendario.html", data = (school - now).days)
-
 
 
 if __name__ == '__main__':
