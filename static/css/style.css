@@ -5,7 +5,7 @@
 
 .titolo {
     text-align:center;
-    background-color: #71717a;
+    
 }
 
 
@@ -14,21 +14,28 @@
 }
 
 body{
-    font-family: sans-serif;
+    background-color: #FFFFF1;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 #frase-autore{
-    width: 90%;
+    text-align:center;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 3em;
+    margin: 0;
+    font-size: 4em;
 
 }
 
 #giorni {
     text-align:center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
     font-size: 5em;
 }
 
