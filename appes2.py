@@ -23,18 +23,12 @@ def data():
     password = request.args['Password']
     passwordConf = request.args['PasswordConf']
     if password == passwordConf:
-        utente = {"Nome" : nome, "Username" : username, "Sex" : sesso, "Password" : password}
-        lista.append(utente)
+        lista.append({"Nome" : nome, "Username" : username, "Sex" : sesso, "Password" : password})
         print(lista)
-        if sesso == "M":
-            saluto = "Benvenuto"
-        elif sesso == "F":
-            saluto = "Benvenuta"
-        else:
-            saluto = "Benvenut*"
-        return render_template("welcomeses2.html", benvenuto = saluto)
+        return render_template("es2login.html")
     else:
         return "<h1>Errore</h1>"
+
 
 @app.route("/login", methods=["GET"])
 def login():
@@ -44,13 +38,19 @@ def login():
 def datalog():
     username = request.args["Username"]
     password = request.args['Password']
-    for i in range(len(lista)):
-        if username == lista[i]["Username"]
-        
-
-
-
-
+    for utente in lista:
+        if username == utente["Username"] and password == utente["Password"]:
+            if utente["Sex"] == "M":
+                saluto = "Benvenuto"
+                color = "#0000FF"
+            elif utente["Sex"] == "F":
+                saluto = "Benvenuta"
+                color = "#ffc0cb"
+            else:
+                saluto = "Benvenut*"
+                color = "#ffff00"
+            return render_template("welcomeses2.html", benvenuto = saluto, nome = utente["Nome"], colore = color)
+    return "<h1>Errore</h1>"
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
