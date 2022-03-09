@@ -25,10 +25,21 @@ def data():
 @app.route("/dataReg", methods=["GET"])
 def dataReg():
     regione = request.args["Regione"]
-    for regioni in dizionario.values():
-        if regioni = regione:
-            capoluogo = dizionario[regioni]
-            return render_template("risultatoes3.html")
+    for key, value in dizionario.items():
+        if regione == key:
+            capoluogo = value
+            return render_template("risultatoes3.html", risposta = capoluogo)
+    return "<h1>Errore</h1>"
+
+@app.route("/dataCap", methods=["GET"])
+def dataCap():
+    capoluogo = request.args["Capoluogo"]
+    for key, value in dizionario.items():
+        if capoluogo == value:
+             regione = key
+             return render_template("risultatoes3.html", risposta = regione)
+    return "<h1>Errore</h1>"
+
 
 
 
