@@ -18,27 +18,22 @@ def home():
 def data():
     scelta = request.args["Scelta"]
     if scelta == "R":
-        return render_template("regionees3.html")
+        regione = request.args["RegCap"]
+        for key, value in dizionario.items():
+            if regione == key:
+                capoluogo = value
+                return render_template("risultatoes3.html", risposta = capoluogo)
+        return "<h1>Errore</h1>"              
     else:
-        return render_template("capoluogoes3.html")
+        capoluogo = request.args["RegCap"]
+        for key, value in dizionario.items():
+            if capoluogo == value:
+                regione = key
+                return render_template("risultatoes3.html", risposta = regione)
+        return "<h1>Errore</h1>"
 
-@app.route("/dataReg", methods=["GET"])
-def dataReg():
-    regione = request.args["Regione"]
-    for key, value in dizionario.items():
-        if regione == key:
-            capoluogo = value
-            return render_template("risultatoes3.html", risposta = capoluogo)
-    return "<h1>Errore</h1>"
+        
 
-@app.route("/dataCap", methods=["GET"])
-def dataCap():
-    capoluogo = request.args["Capoluogo"]
-    for key, value in dizionario.items():
-        if capoluogo == value:
-             regione = key
-             return render_template("risultatoes3.html", risposta = regione)
-    return "<h1>Errore</h1>"
 
 
 
