@@ -32,16 +32,6 @@ def data():
                 return render_template("risultatoes3.html", risposta = regione)
         return "<h1>Errore</h1>"
 
-        
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
