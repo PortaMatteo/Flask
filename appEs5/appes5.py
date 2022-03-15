@@ -16,8 +16,9 @@ def data():
     anno = request.args["Anno"]
     citta = request.args["Citta"]
     df = pd.read_csv("/workspace/Flask/appEs5/templates/dati.csv")
-    df2 = {"Squadra" : squadra, "Anno" : anno, "Città" : citta}
-    df = df.append(df2, ignore_index = True)
+    dUtente = {"Squadra" : squadra, "Anno_Fondazione" : anno, "Città" : citta}
+    df = df.append(dUtente, ignore_index = True)
+    df.to_csv("/workspace/Flask/appEs5/templates/dati.csv", index=False)
     return df.to_html()
 
 
