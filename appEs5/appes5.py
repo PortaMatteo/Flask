@@ -21,7 +21,7 @@ def data():
     anno = request.args["Anno"]
     citta = request.args["Citta"]
     df = pd.read_csv("/workspace/Flask/appEs5/templates/dati.csv")
-    dUtente = {"Squadra" : squadra, "Anno" : anno, "Città" : citta}
+    dUtente = {"Squadra" : squadra, "Anno" : anno, "Citta" : citta}
     df = df.append(dUtente, ignore_index = True)
     df.to_csv("/workspace/Flask/appEs5/templates/dati.csv", index=False)
     return render_template("sceltaes5.html")
@@ -32,9 +32,10 @@ def ricerca():
 
 @app.route("/dataRicerca", methods=["GET"])
 def datiRic():
+    df = pd.read_csv("/workspace/Flask/appEs5/templates/dati.csv")
+    df["Anno"] = df["Anno"].astype(str)
     scelta = request.args["Scelta"]
     cerca = request.args["Ricerca"]
-    df = pd.read_csv("/workspace/Flask/appEs5/templates/dati.csv")
     df_result = df[df[scelta] == cerca]
     return df_result.to_html()
 
