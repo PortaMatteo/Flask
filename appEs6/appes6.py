@@ -57,7 +57,10 @@ def Ricerca():
     global imgUtente
     quartiereUtente = request.args["Quartiere"]
     imgUtente = quartieri[quartieri["NIL"] == quartiereUtente]
-    return render_template('ricercares.html', PageTitle = "Matplotlib", quartiere=quartiereUtente)
+    if len(imgUtente) == 0:
+        return "<h1>Il quartiere inserito non esiste</h1>"
+    else:
+        return render_template('ricercares.html', PageTitle = "Matplotlib", quartiere=quartiereUtente)
 
 @app.route('/scelta', methods=("POST", "GET"))
 def scelta():
@@ -75,7 +78,8 @@ def fontanelleRes():
     quartiereUtente = request.args["Quartiere"]
     imgUtente = quartieri[quartieri["NIL"] == quartiereUtente]
     fontQuart = fontanelle[fontanelle.within(imgUtente.geometry.squeeze())]
-    return render_template('fontanelleres.html', PageTitle = "Matplotlib", quartiere=quartiereUtente)
+    print(fontQuart)
+    return render_template('fontanelleres.html', PageTitle = "Matplotlib", quartiere=quartiereUtente, tabella = fontQuart.to_html())
 
 @app.route("/fontanelle.png", methods=["GET"])
 def Fontanelle():
