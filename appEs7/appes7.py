@@ -12,9 +12,9 @@ import matplotlib.pyplot as plt
 
 regioni = gpd.read_file("/workspace/Flask/appEs7/static/files/Regioni.zip")
 province = gpd.read_file("/workspace/Flask/appEs7/static/files/Province.zip")
-comuni = gpd.read_file("/workspace/Flask/appEs7/static/files/Province.zip")
+comuni = gpd.read_file("/workspace/Flask/appEs7/static/files/Comuni.zip")
 
-print(province)
+print(comuni)
 
 @app.route("/", methods=["GET"])
 def home():
@@ -25,14 +25,16 @@ def radreg():
     regione = request.args["regione"]
     regioneUtente = regioni[regioni["DEN_REG"] == regione]
     provReg = province[province.within(regioneUtente.geometry.squeeze())]
-    return render_template("radProv.html", regione = regione, province = provReg["DEN_UTS"])
+    return render_template("elencoProv.html", regione = regione, province = provReg["DEN_UTS"])
 
-@app.route("/radprov", methods=["GET"])
-def radprov():
+@app.route("/elencoprov", methods=["GET"])
+def elncoprov():
     provincia = request.args["provincia"]
     provinciaUtente = province[province["DEN_UTS"] == provincia]
-    comProv = comuni[comuni.within(provinciaUtente.geometry.squeeze())][""]
-    return render_template("result.html", provincia = provincia, tabella = comProv.to_html)
+    comProv = comuni[comuni.within(provinciaUtente.geometry.squeeze())]["COMUNE"].reset_index()
+    return render_template("result.html", provincia = provincia, tabella = comProv.to_html())
+
+
 
 
 if __name__ == '__main__':
