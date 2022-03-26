@@ -14,7 +14,6 @@ regioni = gpd.read_file("/workspace/Flask/appEs7/static/files/Regioni.zip")
 province = gpd.read_file("/workspace/Flask/appEs7/static/files/Province.zip")
 comuni = gpd.read_file("/workspace/Flask/appEs7/static/files/Comuni.zip")
 
-print(comuni)
 
 @app.route("/", methods=["GET"])
 def home():
