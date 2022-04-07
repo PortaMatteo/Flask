@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 quartieri = gpd.read_file("/workspace/Flask/appEs6/static/files/ds964_nil_wm.zip")
 linee = gpd.read_file("https://dati.comune.milano.it/dataset/8bfe2015-2669-4796-9940-36b3c155b258/resource/b5acc06f-65fb-4481-9428-347fd1c18096/download/tpl_percorsi.geojson")
  
+linee["lung_km"] = linee["lung_km"].astype(float)
 linee["linea"] = linee["linea"].astype(int)
 
 @app.route("/", methods=["GET"])
@@ -36,8 +37,8 @@ def input():
 
 @app.route("/elenco", methods=["GET"])
 def elenco():
-    Min = min(request.args["val1"], request.args["val2"])
-    Max = max(request.args["val1"], request.args["val2"])
+    Min = min(float(request.args["val1"]), float(request.args["val2"]))
+    Max = max(float(request.args["val1"]), float(request.args["val2"]))
     linee_distanza = linee[(linee["lung_km"] > Min) & (linee["lung_km"] < Max)].sort_values("linea")
     return render_template("elenco.html", tabella = linee_distanza.to_html())
 
